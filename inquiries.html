@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <!-- SweetAlert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <title>Project Inquiry | JexoraTech</title>
+  <style>
+    .modal-header h1, .modal-header h6 {
+      text-align: center;
+      width: 100%;
+    }
+    label { color: black; }
+  </style>
+</head>
+<body>
+  <!-- ✅ Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- ✅ Background Video Slideshow -->
+<div class="absolute inset-0 w-full h-full overflow-hidden">
+  <!-- Video 1 -->
+  <video id="bg-video1" autoplay muted loop playsinline 
+    class="absolute inset-0 w-full h-full object-cover filter blur-md transition-opacity duration-1000 opacity-100 z-0">
+    <source src="assets/videos/bg-video1.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Video 2 -->
+  <video id="bg-video2" autoplay muted loop playsinline 
+    class="absolute inset-0 w-full h-full object-cover filter blur-md transition-opacity duration-1000 opacity-0 z-0">
+    <source src="assets/videos/bg-video2.mp4" type="video/mp4" />
+  </video>
+</div>
+
+<script>
+  const videos = [
+    "assets/videos/bg-video1.mp4",
+    "assets/videos/bg-video2.mp4",
+    "assets/videos/bg-video3.mp4"
+  ];
+
+  let currentIndex = 0;
+  let showingFirst = true;
+
+  const video1 = document.getElementById("bg-video1");
+  const video2 = document.getElementById("bg-video2");
+
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % videos.length;
+    if (showingFirst) {
+      video2.querySelector("source").src = videos[currentIndex];
+      video2.load();
+      video2.play();
+
+      video2.classList.replace("opacity-0", "opacity-100");
+      video1.classList.replace("opacity-100", "opacity-0");
+    } else {
+      video1.querySelector("source").src = videos[currentIndex];
+      video1.load();
+      video1.play();
+
+      video1.classList.replace("opacity-0", "opacity-100");
+      video2.classList.replace("opacity-100", "opacity-0");
+    }
+    showingFirst = !showingFirst;
+  }, 10000); // change every 10 sec
+</script>
+
+<!-- ✅ HERO SECTION -->
+<section id="home" class="relative min-h-screen flex items-center pt-[90px] overflow-hidden z-10">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+    <!-- Text Section -->
+    <!-- <div class="reveal text-center lg:text-left">
+      <h1 class="mt-6 text-3xl sm:text-5xl md:text-6xl xl:text-7xl font-extrabold leading-tight text-white">
+        Digital <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300">Solutions</span>
+        <span class="block mt-3 text-lg sm:text-2xl md:text-4xl text-gray-300">For Your Business</span>
+      </h1>
+
+      <p class="mt-6 text-slate-300 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg">
+        We help businesses transform their ideas into powerful digital experiences with our cutting-edge web and mobile solutions.
+      </p> -->
+
+      <!-- Buttons -->
+      <!-- <div class="flex flex-col sm:flex-row gap-6 mt-8 justify-center lg:justify-start">
+        <a href="contact.html" class="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-400 transition-transform transform hover:scale-105 shadow-lg text-sm sm:text-base">
+          🚀 Get Started
+        </a>
+        <a href="#services" class="px-6 sm:px-8 py-3 sm:py-4 border-2 border-yellow-400 text-yellow-400 font-bold rounded-xl hover:bg-yellow-400 hover:text-black transition-transform transform hover:scale-105 shadow-lg text-sm sm:text-base">
+          💼 Our Services
+        </a>
+      </div> -->
+
+      <!-- Stats -->
+      <!-- <div class="grid grid-cols-3 gap-4 sm:gap-6 mt-12">
+        <div class="bg-gray-800 rounded-2xl p-4 sm:p-6 border border-gray-700 text-center">
+          <div class="text-xl sm:text-2xl md:text-3xl font-bold text-yellow-400">3.5+</div>
+          <div class="text-xs sm:text-sm text-gray-300">Years Exp.</div>
+        </div>
+        <div class="bg-gray-800 rounded-2xl p-4 sm:p-6 border border-gray-700 text-center">
+          <div class="text-xl sm:text-2xl md:text-3xl font-bold text-yellow-400">9+</div>
+          <div class="text-xs sm:text-sm text-gray-300">Happy Clients</div>
+        </div>
+        <div class="bg-gray-800 rounded-2xl p-4 sm:p-6 border border-gray-700 text-center">
+          <div class="text-xl sm:text-2xl md:text-3xl font-bold text-yellow-400">12+</div>
+          <div class="text-xs sm:text-sm text-gray-300">Projects</div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- Hero Image Section -->
+    <!-- <div class="relative reveal p-6 sm:p-10">
+      <div class="relative"> -->
+        <!-- Gradient Border -->
+        <!-- <div class="absolute inset-0 bg-gradient-to-r from-yellow-400 via-yellow-500 to-green-500 rounded-3xl transform rotate-6 shadow-xl"></div>
+        <div class="absolute -inset-2 bg-gradient-to-r from-yellow-400 via-yellow-500 to-green-500 rounded-3xl blur-lg opacity-70 animate-pulse"></div> -->
+
+        <!-- Image Layout -->
+        <!-- <div class="relative bg-gray-800 rounded-3xl overflow-hidden transform -rotate-2 shadow-xl p-4">
+          <div class="grid grid-cols-2 gap-4">
+            <img class="w-full h-[200px] sm:h-[250px] object-cover rounded-xl col-span-2" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" alt="Main Team">
+            <img class="w-full h-[120px] sm:h-[150px] object-cover rounded-xl" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80" alt="Team Small 1">
+            <img class="w-full h-[120px] sm:h-[150px] object-cover rounded-xl" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80" alt="Team Small 2">
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+  </div>
+</section>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="projectModal"  data-bs-backdrop="static" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h1 class="modal-title fs-4" id="projectModalLabel">Project Inquiry</h1>
+        <button type="button" class="btn-close" id="redirectBtn" data-bs-dismiss="modal" aria-label="Close" ></button>
+      </div>
+      <div class="modal-header">
+        <h6>Fill out the form and our expert will get back to you!</h6>
+      </div>
+
+      <div class="modal-body">
+        <form id="project-form" class="row g-3 needs-validation" novalidate>
+          <!-- Service -->
+          <div class="col-md-6">
+            <label for="service" class="form-label">What do you need?</label>
+            <select class="form-select" id="service" name="service" required>
+              <option value="">Select a service</option>
+              <option value="Website">Website</option>
+              <option value="Mobile App">Mobile App</option>
+              <option value="E-commerce">E-commerce</option>
+              <option value="UI/UX Design">UI/UX Design</option>
+              <option value="SEO/Marketing">SEO/Marketing</option>
+              <option value="Other">Other</option>
+            </select>
+            <div class="invalid-feedback">Please select a service.</div>
+          </div>
+
+          <!-- Meeting Method -->
+          <div class="col-md-6">
+            <label for="meeting" class="form-label">Preferred Meeting Method</label>
+            <select class="form-select" id="meeting" name="meeting" required>
+              <option value="">Select an option</option>
+              <option value="Google Meet">Google Meet</option>
+              <option value="Zoom">Zoom</option>
+              <option value="Phone Call">Phone Call</option>
+              <option value="WhatsApp">WhatsApp</option>
+              <option value="Other">Other</option> 
+            </select>
+            <div class="invalid-feedback">Please select a meeting method.</div>
+          </div>
+
+          <!-- Name -->
+          <div class="col-md-6">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required maxlength="50" onkeydown="return /[a-zA-Z ]/i.test(event.key)">
+            <div class="invalid-feedback">Please enter a valid name.</div>
+          </div>
+
+          <!-- Email -->
+          <div class="col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+            <div class="invalid-feedback">Please enter a valid email.</div>
+          </div>
+
+          <!-- Mobile -->
+          <div class="col-md-6">
+            <label for="mobile" class="form-label">Mobile Number</label>
+            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="10-digit Mobile Number" pattern="\d{10}" required maxlength="10" onkeydown="return event.key >= '0' && event.key <= '9' || event.key === 'Backspace' || event.key === 'Delete'">
+            <div class="invalid-feedback">Please enter a valid 10-digit mobile number.</div>
+          </div>
+
+          <!-- Budget -->
+          <div class="col-md-6">
+            <label for="budget" class="form-label">Budget (INR)</label>
+            <select class="form-select" id="budget" name="budget" required>
+              <option value="">Select your budget</option>
+              <option value="Below ₹25,000">Below ₹25,000</option>
+              <option value="₹25,000 - ₹50,000">₹25,000 - ₹50,000</option>
+              <option value="₹50,000 - ₹1,00,000">₹50,000 - ₹1,00,000</option>
+              <option value="Above ₹1,00,000">Above ₹1,00,000</option>
+            </select>
+            <div class="invalid-feedback">Please select your budget.</div>
+          </div>
+
+          <!-- Additional Requirements -->
+          <div class="col-12">
+            <label for="requirements" class="form-label">Additional Requirements</label>
+            <textarea class="form-control" id="requirements" name="requirements" rows="3" placeholder="Describe your project or needs..."></textarea>
+          </div>
+
+          <!-- Submit Button -->
+
+            <!-- Buttons -->
+      <!-- <a href="inquiries.php" class="px-8 py-3 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-400 transition-transform transform hover:scale-105 shadow-lg">
+        Contact
+      </a> -->
+
+
+          <div class="col-12 d-grid">
+            <button type="submit" class="px-8 py-3 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-400 transition-transform transform hover:scale-105 shadow-lg">Submit Inquiry</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+$(document).ready(function () {
+  // Show modal on load
+  $("#projectModal").modal('show');
+
+  // Handle form submit
+  $("#project-form").on("submit", function(e) {
+    e.preventDefault();
+
+    if (!this.checkValidity()) {
+      e.stopPropagation();
+      this.classList.add("was-validated");
+      return;
+    }
+
+    let formData = {
+      service: $("#service").val(),
+      meeting: $("#meeting").val(),
+      name: $("#name").val(),
+      email: $("#email").val(),
+      mobile: $("#mobile").val(),
+      budget: $("#budget").val(),
+      requirements: $("#requirements").val()
+    };
+
+    fetch("api_insert.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData)
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === "success") {
+        Swal.fire("✅ Congratulations Inquiry added!!!", data.message, "success").then(() => { 
+          window.location.href = "jexoratech.php";
+        });
+      } else {
+        Swal.fire("❌ Error", data.message, "error");
+      }
+    })
+    .catch(err => {
+      Swal.fire("⚠️ Failed", "Something went wrong!", "error");
+    });
+  });
+
+  // Redirect on close
+  $("#redirectBtn").on("click", function() {
+    window.location.href = "index.html";
+  });
+});
+</script>
+
+</body>
+</html>
