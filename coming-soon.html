@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coming Soon | JexoraTech</title>
+
+  <!-- ✅ TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- ✅ Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- ✅ AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: radial-gradient(circle at 20% 20%, #0f172a, #020617);
+      font-family: 'Poppins', sans-serif;
+      color: white;
+    }
+    .glow {
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+  </style>
+</head>
+<body class="flex flex-col justify-center items-center min-h-screen text-center px-6">
+
+  <!-- ✅ Logo / Brand -->
+  <div data-aos="zoom-in" class="mb-8">
+    <img src="https://cdn-icons-png.flaticon.com/512/906/906175.png" alt="Logo" class="w-20 mx-auto mb-4">
+    <h1 class="text-4xl md:text-5xl font-extrabold glow">JexoraTech</h1>
+  </div>
+
+  <!-- ✅ Coming Soon Text -->
+  <div data-aos="fade-up">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4 animate-pulse">🚀 We’re Launching Soon!</h2>
+    <p class="text-gray-300 max-w-lg mx-auto mb-10">
+      Our website is under construction. We’re working hard to bring you an amazing experience.
+    </p>
+  </div>
+
+  <!-- ✅ Countdown Timer -->
+  <div id="countdown" class="flex justify-center space-x-6 text-center text-2xl font-bold mb-12" data-aos="zoom-in">
+    <div><span id="days" class="text-yellow-400 text-4xl block">00</span><span class="text-sm text-gray-400">Days</span></div>
+    <div><span id="hours" class="text-yellow-400 text-4xl block">00</span><span class="text-sm text-gray-400">Hours</span></div>
+    <div><span id="minutes" class="text-yellow-400 text-4xl block">00</span><span class="text-sm text-gray-400">Minutes</span></div>
+    <div><span id="seconds" class="text-yellow-400 text-4xl block">00</span><span class="text-sm text-gray-400">Seconds</span></div>
+  </div>
+
+  <!-- ✅ Email Subscription (Optional) -->
+  <form action="#" method="POST" class="flex flex-col md:flex-row items-center gap-3" data-aos="fade-up">
+    <input type="email" placeholder="Enter your email" required
+           class="px-5 py-3 rounded-full text-black w-72 focus:ring-2 focus:ring-yellow-400 outline-none">
+    <button type="submit" class="px-6 py-3 bg-yellow-400 text-black font-semibold rounded-full hover:scale-105 transition">
+      Notify Me
+    </button>
+  </form>
+
+  <!-- ✅ Social Links -->
+  <div class="flex space-x-6 mt-10 text-2xl" data-aos="fade-up">
+    <a href="#" class="hover:text-yellow-400 transition"><i class="fab fa-facebook"></i></a>
+    <a href="#" class="hover:text-yellow-400 transition"><i class="fab fa-twitter"></i></a>
+    <a href="#" class="hover:text-yellow-400 transition"><i class="fab fa-linkedin"></i></a>
+    <a href="#" class="hover:text-yellow-400 transition"><i class="fab fa-instagram"></i></a>
+  </div>
+
+  <!-- ✅ Footer -->
+  <footer class="absolute bottom-5 text-gray-400 text-sm">
+    © <?= date("Y") ?> <span class="text-yellow-400 font-semibold">JexoraTech</span>. All Rights Reserved.
+  </footer>
+
+  <!-- ✅ JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    // ✅ Countdown Timer
+    const targetDate = new Date("2025-12-31T00:00:00").getTime();
+    const countdown = setInterval(() => {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = seconds;
+
+      if (diff < 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").innerHTML = "<span class='text-yellow-400 text-2xl font-bold'>🎉 We’re Live Now!</span>";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
